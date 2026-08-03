@@ -5,8 +5,8 @@
 
             <div class="flex items-center justify-between w-full my-4 px-4 xs:pr-0">
                 <div class="mr-6">
-                    <h2 class="m-0">Dashboard</h2>
-                    <div class="text-secondary tracking-tight">Drive health at a glance</div>
+                    <h2 class="m-0">硬盘概览</h2>
+                    <div class="text-secondary tracking-tight">快速查看所有硬盘的健康状态</div>
                 </div>
                 <!-- Action buttons -->
                 <div class="flex items-center">
@@ -16,19 +16,19 @@
                         <mat-icon class="icon-size-20"
                                   [color]="showArchived ? 'primary' : null"
                                   [svgIcon]="'archive'"></mat-icon>
-                                <span class="ml-2">Archived</span>
+                                <span class="ml-2">已归档</span>
                     </button>
-                    <button matTooltip="not yet implemented" class="ml-2 xs:hidden" mat-stroked-button>
+                    <button matTooltip="暂未实现" class="ml-2 xs:hidden" mat-stroked-button>
                         <mat-icon class="icon-size-20"
                                   [svgIcon]="'save'"></mat-icon>
-                        <span class="ml-2">Export</span>
+                        <span class="ml-2">导出</span>
                     </button>
                     <button class="ml-2 xs:hidden"
                             (click)="openDialog()"
                             mat-stroked-button>
                         <mat-icon class="icon-size-20 rotate-90 mirror"
                                   [svgIcon]="'tune'"></mat-icon>
-                        <span class="ml-2">Settings</span>
+                        <span class="ml-2">设置</span>
                     </button>
 
                     <!-- Actions menu (visible on xs) -->
@@ -42,18 +42,18 @@
                                 <mat-icon class="icon-size-20"
                                           [color]="showArchived ? 'primary' : null"
                                           [svgIcon]="'archive'"></mat-icon>
-                                <span class="ml-2">Archived</span>
+                                <span class="ml-2">已归档</span>
                             </button>
                             <button mat-menu-item
-                                    matTooltip="not yet implemented">
+                                    matTooltip="暂未实现">
                                 <mat-icon class="icon-size-20"
                                           [svgIcon]="'save'"></mat-icon>
-                                <span class="ml-2">Export</span>
+                                <span class="ml-2">导出</span>
                             </button>
                             <button mat-menu-item (click)="openDialog()">
                                 <mat-icon class="icon-size-20 rotate-90 mirror"
                                           [svgIcon]="'tune'"></mat-icon>
-                                <span class="ml-2">Settings</span>
+                                <span class="ml-2">设置</span>
                             </button>
                         </mat-menu>
                     </div>
@@ -82,21 +82,21 @@
                     <div class="flex flex-col p-6 pr-4 pb-4">
                         <div class="flex items-center justify-between">
                             <div class="flex flex-col">
-                                <div class="font-bold text-md text-secondary uppercase tracking-wider mr-4">Temperature</div>
-                                <div class="text-sm text-hint font-medium">Temperature history for each device</div>
+                                <div class="font-bold text-md text-secondary uppercase tracking-wider mr-4">温度</div>
+                                <div class="text-sm text-hint font-medium">各硬盘的历史温度</div>
                             </div>
                             <div>
                                 <button class="h-8 min-h-8 px-2"
                                         mat-button
                                         [matMenuTriggerFor]="tempRangeMenu">
-                                    <span class="font-medium text-sm text-hint">{{ tempDurationKey }}</span>
+                                    <span class="font-medium text-sm text-hint">{{ tempDurationLabel }}</span>
                                 </button>
                                 <mat-menu #tempRangeMenu="matMenu">
-                                    <button (click)="changeSummaryTempDuration('forever')" mat-menu-item>forever</button>
-                                    <button (click)="changeSummaryTempDuration('year')" mat-menu-item>year</button>
-                                    <button (click)="changeSummaryTempDuration('month')" mat-menu-item>month</button>
-                                    <button (click)="changeSummaryTempDuration('week')" mat-menu-item>week</button>
-                                    <button (click)="changeSummaryTempDuration('day')" mat-menu-item>day</button>
+                                    <button (click)="changeSummaryTempDuration('forever')" mat-menu-item>全部</button>
+                                    <button (click)="changeSummaryTempDuration('year')" mat-menu-item>一年</button>
+                                    <button (click)="changeSummaryTempDuration('month')" mat-menu-item>一个月</button>
+                                    <button (click)="changeSummaryTempDuration('week')" mat-menu-item>一周</button>
+                                    <button (click)="changeSummaryTempDuration('day')" mat-menu-item>一天</button>
                                 </mat-menu>
                             </div>
                         </div>
@@ -125,11 +125,10 @@
         <img class="image"
              src="assets/images/dashboard-placeholder.png">
 
-        <h1>No Devices Detected!</h1>
-        <p style="max-width:700px;">Scrutiny includes a Collector agent that you must run on all of your systems. The Collector is responsible for detecting connected storage
-            devices and collecting S.M.A.R.T data on a configurable schedule.</p>
+        <h1>尚未检测到硬盘</h1>
+        <p style="max-width:700px;">Scrutiny 包含一个需要在受监控系统上运行的采集器。采集器负责检测已连接的存储设备，并按照设定的计划收集 S.M.A.R.T 数据。</p>
 
-        <p><br/>You can trigger the Collector manually by running the following command, then refreshing this page:</p>
+        <p><br/>你可以运行以下命令手动触发采集，然后刷新此页面：</p>
         <code>scrutiny-collector-metrics run</code>
 
     </div>

@@ -1,11 +1,10 @@
-<h2 mat-dialog-title>Archive {{data.title}}?</h2>
-<mat-dialog-content>This will remove the device from Scrutiny dashboard, unless you toggle show archived. <strong>Any data about the device
-    itself will remain untouched.</strong></mat-dialog-content>
+<h2 mat-dialog-title>归档 {{data.title}}？</h2>
+<mat-dialog-content>归档后，该硬盘将从默认仪表盘中隐藏；开启“显示已归档”后仍可查看。<strong>硬盘记录和硬盘本身的数据都不会受到影响。</strong></mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close>取消</button>
     <button class="yellow-600" mat-button (click)="onArchiveClick()">
         <mat-icon class="icon-size-20 mr-3"
                   [svgIcon]="'archive'"></mat-icon>
-        Archive
+        归档
     </button>
 </mat-dialog-actions>

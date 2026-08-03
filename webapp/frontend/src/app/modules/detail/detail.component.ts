@@ -91,6 +91,19 @@ export class DetailComponent implements OnInit, AfterViewInit, OnDestroy {
     readonly humanizeDuration = humanizeDuration;
 
     deviceStatusForModelWithThreshold = DeviceStatusPipe.deviceStatusForModelWithThreshold
+
+    getStatusLabel(status: string): string {
+        const labels = {
+            passed: '正常',
+            failed: '异常',
+            'failed: smart': '异常：SMART',
+            'failed: scrutiny': '异常：Scrutiny',
+            'failed: both': '异常：SMART 与 Scrutiny',
+            warn: '警告',
+            unknown: '未知'
+        }
+        return labels[status] || status
+    }
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
@@ -189,7 +202,7 @@ export class DetailComponent implements OnInit, AfterViewInit, OnDestroy {
     getAttributeName(attributeData: SmartAttributeModel): string {
         const attributeMetadata = this.metadata[attributeData.attribute_id]
         if (!attributeMetadata) {
-            return 'Unknown Attribute Name'
+            return '未知属性名称'
         } else {
             return attributeMetadata.display_name
         }
@@ -198,7 +211,7 @@ export class DetailComponent implements OnInit, AfterViewInit, OnDestroy {
     getAttributeDescription(attributeData: SmartAttributeModel): string {
         const attributeMetadata = this.metadata[attributeData.attribute_id]
         if (!attributeMetadata) {
-            return 'Unknown'
+            return '未知'
         } else {
             return attributeMetadata.description
         }
@@ -331,7 +344,7 @@ export class DetailComponent implements OnInit, AfterViewInit, OnDestroy {
                     // attrHistory.push(this.getAttributeValue(smart_result.attrs[attrId]))
 
                     const chartDatapoint = {
-                        x: formatDate(smartResult.date, 'MMMM dd, yyyy - HH:mm', this.locale),
+                        x: formatDate(smartResult.date, 'yyyy-MM-dd HH:mm', this.locale),
                         y: this.getAttributeValue(smartResult.attrs[attrId])
                     }
                     const attributeStatusName = this.getAttributeStatusName(smartResult.attrs[attrId].status)

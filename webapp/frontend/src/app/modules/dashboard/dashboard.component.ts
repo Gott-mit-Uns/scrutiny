@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy
     hostGroups: { [hostId: string]: string[] } = {}
     temperatureOptions: ApexOptions;
     tempDurationKey = 'week'
+    tempDurationLabel = '一周'
     config: AppConfig;
     showArchived: boolean;
 
@@ -281,6 +282,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy
 
     changeSummaryTempDuration(durationKey: string): void {
         this.tempDurationKey = durationKey
+        const durationLabels = {
+            forever: '全部',
+            year: '一年',
+            month: '一个月',
+            week: '一周',
+            day: '一天'
+        }
+        this.tempDurationLabel = durationLabels[durationKey] || durationKey
 
         this._dashboardService.getSummaryTempData(durationKey)
             .subscribe((tempHistoryData) => {

@@ -1,12 +1,11 @@
-<h2 mat-dialog-title>Delete {{data.title}}?</h2>
-<mat-dialog-content>This will remove the device and all historical data from Scrutiny. <strong>Any data on the device
-    itself will remain untouched.</strong></mat-dialog-content>
+<h2 mat-dialog-title>删除 {{data.title}}？</h2>
+<mat-dialog-content>这会从 Scrutiny 中删除该硬盘及其全部历史记录。<strong>硬盘本身保存的数据不会受到影响。</strong></mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close>取消</button>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
     <button class="red-600" mat-button (click)="onDeleteClick()">
         <mat-icon class="icon-size-20 mr-3"
                   [svgIcon]="'delete_forever'"></mat-icon>
-        Delete
+        删除
     </button>
 </mat-dialog-actions>

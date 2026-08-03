@@ -39,6 +39,15 @@ export class DashboardDeviceComponent implements OnInit {
 
     deviceStatusForModelWithThreshold = DeviceStatusPipe.deviceStatusForModelWithThreshold
 
+    getStatusLabel(status: string): string {
+        const labels = {
+            passed: '正常',
+            failed: '异常',
+            unknown: '未知'
+        }
+        return labels[status] || status
+    }
+
     ngOnInit(): void {
         // Subscribe to config changes
         this._configService.config$
