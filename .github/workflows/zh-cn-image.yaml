@@ -12,6 +12,9 @@ permissions:
 
 jobs:
   build-and-push:
+    concurrency:
+      group: scrutiny-zh-cn-image
+      cancel-in-progress: false
     runs-on: ubuntu-latest
 
     steps:
@@ -56,3 +59,10 @@ jobs:
             grep -q "lang=\"zh-CN\"" /opt/scrutiny/web/index.html
             grep -q "Scrutiny 硬盘健康监控" /opt/scrutiny/web/index.html
           '
+
+      - name: Publish verified image as latest
+        run: |
+          docker buildx imagetools create \
+            --tag ghcr.io/gott-mit-uns/scrutiny:latest \
+            ghcr.io/gott-mit-uns/scrutiny:v0.9.4-zh-cn
+          docker buildx imagetools inspect ghcr.io/gott-mit-uns/scrutiny:latest

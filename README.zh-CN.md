@@ -24,6 +24,14 @@ GitHub Actions 构建完成后，可以直接使用：
 image: ghcr.io/gott-mit-uns/scrutiny:v0.9.4-zh-cn
 ```
 
+如需跟随最近通过构建验证的中文版本，可使用：
+
+```yaml
+image: ghcr.io/gott-mit-uns/scrutiny:latest
+```
+
+`latest` 始终指向本 fork 的中文镜像，只有版本镜像完成构建和中文首页、目录权限检查后才更新。它不会自动同步上游代码；维护者合并并发布新版本后，执行 `docker compose pull` 和 `docker compose up -d` 即可更新。需要固定版本或回退时使用明确的版本标签。
+
 也可以使用前面构建的本地镜像：
 
 ```yaml
