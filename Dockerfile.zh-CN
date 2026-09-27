@@ -1,18 +1,21 @@
 # syntax=docker/dockerfile:1.4
 
 # Compile the audited Simplified Chinese frontend from this repository.
-FROM --platform=${BUILDPLATFORM} node AS frontendbuild
+FROM --platform=${BUILDPLATFORM} node:22-bookworm AS frontendbuild
 
 WORKDIR /go/src/github.com/analogj/scrutiny
 
 COPY Makefile ./
 COPY webapp/frontend ./webapp/frontend
 
-RUN make binary-frontend
+ARG FRONTEND_VERSION=v0.9.4-zh-cn
+RUN printf "export const versionInfo = { version: '%s' };\n" "${FRONTEND_VERSION}" \
+    > webapp/frontend/src/environments/versions.ts \
+    && make binary-frontend
 
-# Keep the official v0.9.2 backend, collector, smartmontools and InfluxDB.
-FROM ghcr.io/analogj/scrutiny:v0.9.2-omnibus
+# Keep the official v0.9.4 backend, collector, smartmontools and InfluxDB.
+FROM ghcr.io/analogj/scrutiny:v0.9.4-omnibus
 
-COPY --link --from=frontendbuild --chmod=644 \
+COPY --link --from=frontendbuild \
     /go/src/github.com/analogj/scrutiny/dist \
     /opt/scrutiny/web

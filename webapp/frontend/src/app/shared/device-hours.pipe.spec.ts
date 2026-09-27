@@ -11,32 +11,32 @@ describe("DeviceHoursPipe", () => {
       {
         input: 12345,
         configuration: "device_hours",
-        result: "12345 hours",
+        result: "12345 小时",
       },
       {
         input: 15273,
         configuration: "humanize",
-        result: "1 year, 8 months, 3 weeks, 6 days, 15 hours",
+        result: "1 年, 8 个月, 3 周, 6 天, 15 小时",
       },
       {
         input: 48,
         configuration: null,
-        result: "2 days",
+        result: "2 天",
       },
       {
         input: 168,
         configuration: "scrutiny",
-        result: "1 week",
+        result: "1 周",
       },
       {
         input: null,
         configuration: "device_hours",
-        result: "Unknown",
+        result: "未知",
       },
       {
         input: null,
         configuration: "humanize",
-        result: "Unknown",
+        result: "未知",
       },
     ];
 
