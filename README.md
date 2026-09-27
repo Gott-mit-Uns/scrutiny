@@ -11,18 +11,18 @@
 [![codecov](https://codecov.io/gh/AnalogJ/scrutiny/branch/master/graph/badge.svg)](https://codecov.io/gh/AnalogJ/scrutiny)
 [![GitHub license](https://img.shields.io/github/license/AnalogJ/scrutiny.svg?style=flat-square)](https://github.com/AnalogJ/scrutiny/blob/master/LICENSE)
 [![Godoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://godoc.org/github.com/analogj/scrutiny)
-[![Go Report Card](https://goreportcard.com/badge/github.com/AnalogJ/scrutiny?style=flat-square)](https://goreportcard.com/report/github.com/AnalogJ/scrutiny)
 [![GitHub release](http://img.shields.io/github/release/AnalogJ/scrutiny.svg?style=flat-square)](https://github.com/AnalogJ/scrutiny/releases)
 
 WebUI for smartd S.M.A.R.T monitoring
 
-> NOTE: Scrutiny is a Work-in-Progress and still has some rough edges.
+> [!NOTE]
+> Scrutiny is a Work-in-Progress and still has some rough edges.
 
 [![](docs/dashboard.png)](https://imgur.com/a/5k8qMzS)
 
 # Introduction
 
-If you run a server with more than a couple of hard drives, you're probably already familiar with S.M.A.R.T and the `smartd` daemon. If not, it's an incredible open source project described as the following:
+If you run a server with more than a couple of hard drives, you're probably already familiar with S.M.A.R.T and [the `smartd` daemon](https://github.com/smartmontools/smartmontools). If not, it's an incredible open source project [described as the following](https://linux.die.net/man/8/smartd):
 
 > smartd is a daemon that monitors the Self-Monitoring, Analysis and Reporting Technology (SMART) system built into many ATA, IDE and SCSI-3 hard drives. The purpose of SMART is to monitor the reliability of the hard drive and predict drive failures, and to carry out different types of drive self-tests.
 
@@ -69,7 +69,7 @@ See [docs/TROUBLESHOOTING_DEVICE_COLLECTOR.md](./docs/TROUBLESHOOTING_DEVICE_COL
 
 > [!IMPORTANT]
 > Using `latest-` tags is dangerous as it can update your image without warning. It is a best practice to pin a specific version. scrutiny pushes releases with semver tags,
-> so you can use tags like `v0.8.2-omnibus`, `v0.8-web`, `v0-collector`, etc. For a list of all image tags see
+> so you can use tags like `v0.9.3-omnibus`, `v0.9-web`, `v0-collector`, etc. For a list of all image tags see
 > [scrutiny package versions](https://github.com/AnalogJ/scrutiny/pkgs/container/scrutiny/versions?filters%5Bversion_type%5D=tagged)
 
 If you're using Docker, getting started is as simple as running the following command:

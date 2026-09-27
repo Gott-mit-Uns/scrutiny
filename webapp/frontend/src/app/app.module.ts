@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ExtraOptions, PreloadAllModules, RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
-import {MarkdownModule} from 'ngx-markdown';
 import {TreoModule} from '@treo';
 import {ScrutinyConfigModule} from 'app/core/config/scrutiny-config.module';
 import {TreoMockApiModule} from '@treo/lib/mock-api';
@@ -13,6 +12,7 @@ import {mockDataServices} from 'app/data/mock';
 import {LayoutModule} from 'app/layout/layout.module';
 import {AppComponent} from 'app/app.component';
 import {appRoutes, getAppBaseHref} from 'app/app.routing';
+import {environment} from 'environments/environment';
 
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -24,8 +24,7 @@ let dev = [
 ];
 
 // if production clear dev imports and set to prod mode
-// @ts-ignore
-if (process.env.NODE_ENV === 'production') {
+if (environment.production) {
     dev = [];
     enableProdMode();
 }
@@ -48,10 +47,7 @@ if (process.env.NODE_ENV === 'production') {
         CoreModule,
 
         // Layout
-        LayoutModule,
-
-        // 3rd party modules
-        MarkdownModule.forRoot({})
+        LayoutModule
     ],
     bootstrap   : [
         AppComponent
